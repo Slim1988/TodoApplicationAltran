@@ -1,0 +1,38 @@
+﻿@model AltranApplication.Models.Todo
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h1>Details for : "@Model.Title"</h1>
+
+        <hr />
+        <h5>Title : @Html.DisplayFor(m => m.Title)</h5>
+        <hr />
+        @if (Model.State == true)
+        {
+            <h5>State : Done</h5>
+        }
+        else
+        {
+            <h5>State : Not Done</h5>
+        }
+        <hr />
+        <h5>Description : @Html.DisplayFor(m => m.Description)</h5>
+        <hr />
+
+    </div>
+
+    @Html.ActionLink("Back to list", "Index")
+</body>
+</html>
+

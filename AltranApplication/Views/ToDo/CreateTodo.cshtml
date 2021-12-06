@@ -1,0 +1,32 @@
+﻿@model AltranApplication.Models.Todo
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    <h1>Create a new todo</h1>
+    <hr />
+    <div>
+        @using (Html.BeginForm("CreateTodo", "ToDo", FormMethod.Post))
+        {
+            <h3>@Html.DisplayNameFor(model => model.Title) : </h3>
+            @Html.TextBoxFor(model => model.Title)<br />
+           <span style="color:red">@Html.ValidationMessageFor(model => model.Title)</span>
+            <h3>@Html.DisplayNameFor(model => model.Description) : </h3>
+            @Html.TextAreaFor(model => model.Description)<br />
+            <br />
+            <input type="submit" name="name" value="Create" />
+
+        }
+    </div>
+</body>
+</html>
+

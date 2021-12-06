@@ -1,0 +1,11 @@
+﻿.Login {
+    position: absolute;
+    left: 40%;
+    top: 40%;
+    border: 1px solid #ccc;
+    padding: 10px 10px;
+}
+
+input[type="submit"], input[type="reset"] {
+    background-color: burlywood;
+}

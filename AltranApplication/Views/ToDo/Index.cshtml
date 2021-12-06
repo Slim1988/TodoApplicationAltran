@@ -1,0 +1,90 @@
+﻿@model IEnumerable<AltranApplication.Models.Todo>
+
+
+@{
+    Layout = null;
+
+    //if (@Session["UserId"] == null)
+    //{
+    //    Response.Redirect("~/Login/Index");
+    //}
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Todo list</title>
+</head>
+<body>
+
+    <h3> Hello "@Session["UserName"].ToString()" </h3>
+   
+    @Html.ActionLink("LogOut", "LogOut")
+    <hr /><hr />
+    <div>
+
+        @if (Model != null)
+        {
+            {
+
+                <table class="table table-striped table-dark">
+                    <thead>
+                        <tr>
+                            <th> @Html.DisplayNameFor(m => m.Title)</th>
+                            <th> @Html.DisplayNameFor(m => m.State)</th>
+                            <th></th>
+                            <th></th>
+
+
+
+                        </tr>
+                    </thead>
+                    @foreach (var todo in Model)
+                    {
+                        <tbody>
+                            <tr>
+
+                                @if (todo.State == true)
+                                {
+                                    <th><del>@Html.DisplayFor(mtodo => todo.Title)</del></th>
+                                    <th style="color:green">Done</th>
+                                    <th></th>
+                                    <th></th>
+
+                                }
+                                else
+                                {
+                                    <th>@Html.DisplayFor(mtodo => todo.Title)</th>
+                                    <th style="color:red">Not Done</th>
+                                    <th></th>
+                                    <th></th>
+
+                                }
+
+
+                                <td><button style="background-color:red">@Html.ActionLink("Delete", "DeleteTodo", new { id = todo.TodoId }, new { onclick = "return confirm('Are you sure you wish to delete this customer?');" })</button></td>
+
+                                @*For Customer Details*@
+                                <td><button style="background-color:green">@Html.ActionLink("Details", "DetailsTodo", new { Id = todo.TodoId })</button></td>
+
+                                @*For Customer Modif*@
+                                <td><button style="background-color:white">@Html.ActionLink("Edit", "EditTodo", new { Id = todo.TodoId })</button></td>
+                            </tr>
+
+                        </tbody>
+                    }
+                </table>
+                <hr />
+                <hr />
+                @Html.ActionLink("Create new todo", "CreateTodo");
+            }
+        }
+    </div>
+
+
+</body>
+</html>
+
+
